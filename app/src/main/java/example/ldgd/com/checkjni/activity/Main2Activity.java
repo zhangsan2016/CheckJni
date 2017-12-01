@@ -51,7 +51,8 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
     boolean isPlaying = false;
 
     int frequency = 8000;
-    int channelConfiguration = AudioFormat.CHANNEL_IN_MONO;
+ //   int channelConfiguration = AudioFormat.CHANNEL_IN_MONO;
+        int channelConfiguration = AudioFormat.CHANNEL_CONFIGURATION_MONO;
 
 //    int frequency = 11025;
 //    int channelConfiguration = AudioFormat.CHANNEL_CONFIGURATION_MONO;
