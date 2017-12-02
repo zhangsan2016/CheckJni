@@ -8,6 +8,7 @@ import android.media.AudioRecord;
 import android.media.AudioTrack;
 import android.media.MediaRecorder;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.NonNull;
@@ -85,14 +86,15 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
         stopPlaybackButton.setEnabled(false);
 
 
-        if (ContextCompat.checkSelfPermission(Main2Activity.this, permissions[0]) != PackageManager.PERMISSION_GRANTED) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && ContextCompat.checkSelfPermission(Main2Activity.this, permissions[0]) != PackageManager.PERMISSION_GRANTED) {
 
             ActivityCompat.requestPermissions(Main2Activity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
 
         } else {
             Toast.makeText(this,"没有录音权限",Toast.LENGTH_SHORT).show();
+            initFilePath();
         }
-        initFilePath();
+
 
 /*        if(ContextCompat.checkSelfPermission(this,Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
 //            ActivityCompat.requestPermissions(Main2Activity.this,new String[]{Manifest.permission.RECORD_AUDIO},
