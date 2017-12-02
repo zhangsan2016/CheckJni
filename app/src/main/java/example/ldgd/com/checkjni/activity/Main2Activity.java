@@ -90,18 +90,18 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
             ActivityCompat.requestPermissions(Main2Activity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
 
         } else {
-            initFilePath();
+            Toast.makeText(this,"没有录音权限",Toast.LENGTH_SHORT).show();
         }
+        initFilePath();
 
-
-        if(ContextCompat.checkSelfPermission(this,Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
+/*        if(ContextCompat.checkSelfPermission(this,Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
 //            ActivityCompat.requestPermissions(Main2Activity.this,new String[]{Manifest.permission.RECORD_AUDIO},
 //                    1);
 
             Toast.makeText(this,"没有录音权限",Toast.LENGTH_SHORT).show();
         }else{
             Toast.makeText(this,"you权限",Toast.LENGTH_SHORT).show();
-        }
+        }*/
 
 
     }
