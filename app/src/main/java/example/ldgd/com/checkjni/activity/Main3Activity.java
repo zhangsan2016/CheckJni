@@ -87,11 +87,10 @@ public class Main3Activity extends AppCompatActivity implements View.OnClickList
 
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && ContextCompat.checkSelfPermission(Main3Activity.this, permissions[0]) != PackageManager.PERMISSION_GRANTED) {
-
+            Toast.makeText(this,"没有录音权限",Toast.LENGTH_SHORT).show();
             ActivityCompat.requestPermissions(Main3Activity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
 
         } else {
-            Toast.makeText(this,"没有录音权限",Toast.LENGTH_SHORT).show();
             initFilePath();
         }
 
