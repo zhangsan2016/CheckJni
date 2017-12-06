@@ -156,7 +156,7 @@ public class Main3Activity extends AppCompatActivity implements View.OnClickList
 
             int bufferSize = AudioTrack.getMinBufferSize(frequency,
                     channelConfiguration, audioEncoding);
-            short[] audiodata = new short[bufferSize / 4];
+            byte[] audiodata = new byte[bufferSize];
 
             try {
                 DataInputStream dis = new DataInputStream(
@@ -173,7 +173,7 @@ public class Main3Activity extends AppCompatActivity implements View.OnClickList
                 while (isPlaying && dis.available() > 0) {
                     int i = 0;
                     while (dis.available() > 0 && i < audiodata.length) {
-                        audiodata[i] = dis.readShort();
+                        audiodata[i] = dis.readByte();
                         i++;
                     }
                     audioTrack.write(audiodata, 0, audiodata.length);
@@ -216,7 +216,7 @@ public class Main3Activity extends AppCompatActivity implements View.OnClickList
                         MediaRecorder.AudioSource.MIC, frequency,
                         channelConfiguration, audioEncoding, bufferSize);
 
-                short[] buffer = new short[bufferSize];
+                byte[] buffer = new byte[bufferSize];
                 audioRecord.startRecording();
 
                 int r = 0;
@@ -224,7 +224,7 @@ public class Main3Activity extends AppCompatActivity implements View.OnClickList
                     int bufferReadResult = audioRecord.read(buffer, 0,
                             bufferSize);
                     for (int i = 0; i < bufferReadResult; i++) {
-                        dos.writeShort(buffer[i]);
+                        dos.writeByte(buffer[i]);
                     }
 
                     publishProgress(new Integer(r));
